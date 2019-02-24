@@ -1,8 +1,7 @@
-<!-- <div style="text-align:center">
-  <h2>
-    Exchange Currency
-  </h2>
+<div class="header-wrapper">
+  Exchange Currency
 </div>
+
 <div class="outerWrapper">
   <div class="row">
     <mat-form-field>
@@ -13,32 +12,36 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <!-- <mat-form-field>
       <input matInput [matDatepicker]="picker" placeholder="Choose a date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    </mat-form-field> -->
   </div>
 
-  <div class="row">
+  <ng-scrollbar class="row currency-table">
     <table mat-table [dataSource]="latestRate" class="mat-elevation-z8" id="rateTable">
       <ng-container matColumnDef="code">
-        <th mat-header-cell *matHeaderCellDef>Code</th>
+        <th mat-header-cell *matHeaderCellDef class="table-header-lbl">Currency Code</th>
         <td mat-cell *matCellDef="let rateObj"> {{rateObj.code}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="table-header-lbl">Currency Name</th>
+        <td mat-cell *matCellDef="let rateObj"> {{getCurrencyName(rateObj.code)}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="rate">
-        <th mat-header-cell *matHeaderCellDef>Rate</th>
+        <th mat-header-cell *matHeaderCellDef class="table-header-lbl">Today's Rate</th>
         <td mat-cell *matCellDef="let rateObj"> {{rateObj.rate}} </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-  </div>
+  </ng-scrollbar>
+</div>
 
-</div> -->
-
-<app-project-main-header></app-project-main-header>
-<app-task-list></app-task-list>
-
+<div class="footer-wrapper">
+  Made with ❤️ in India ★ By Sunit Naik
+</div>

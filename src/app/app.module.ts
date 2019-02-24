@@ -5,18 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule, MatSelectModule, MatDatepickerModule, MatTableModule, MatNativeDateModule, MatInputModule} from '@angular/material';
-import {MatIconModule} from '@angular/material/icon';
-
+import {MatIconModule} from '@angular/material';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 import { AppComponent } from './app.component';
-import { TaskListComponent } from './component/task-list/task-list.component';
-import { ProjectMainHeaderComponent } from './component/project-main-header/project-main-header.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TaskListComponent,
-    ProjectMainHeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +25,8 @@ import { ProjectMainHeaderComponent } from './component/project-main-header/proj
     MatTableModule,
     MatNativeDateModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    NgScrollbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
