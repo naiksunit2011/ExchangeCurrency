@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { UtilService } from 'src/service/util.service';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { UtilService } from 'src/service/util.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('sidenav') sidenav: MatSidenav;
   countryArr = [];
   currentCountryCode = "INR";
   countryJson = { "RUB":{"currency":"Russian ruble"},"RON":{"currency":"Romanian leu"},"BGN":{"currency":"Bulgarian lev"},"EUR":{"currency":"Euro"},"TRY":{"currency":"Turkish lira"},"AUD":{"country":"","currency":"Australian dollar"},"MXN":{"country":"","currency":"Mexican peso"},"USD": { "country": "Virgin Islands (US)", "currency": "US Dollar" }, "NOK": { "country": "Svalbard and Jan Mayen", "currency": "Norwegian Krone" }, "BRL": { "country": "Brazil", "currency": "Brazil Real" }, "CAD": { "country": "Canada", "currency": "Canadian Dollar" }, "CNY": { "country": "China", "currency": "Yuan Renminbi" }, "HKD": { "country": "China (Hong Kong S.A.R.)", "currency": "Hong Kong Dollar" }, "NZD": { "country": "Tokelau", "currency": "New Zealand Dollar" }, "HRK": { "country": "Croatia", "currency": "Croatian Kuna" }, "CZK": { "country": "Czech Republic", "currency": "Czech Koruna" }, "DKK": { "country": "Greenland", "currency": "Danish Krone" }, "HUF": { "country": "Hungary", "currency": "Forint" }, "ISK": { "country": "Iceland", "currency": "Iceland Krona" }, "INR": { "country": "India", "currency": "Indian Rupee" }, "IDR": { "country": "Indonesia", "currency": "Indonesian Rupiah" }, "ILS": { "country": "Israel", "currency": "New Israeli Sheqel" }, "JPY": { "country": "Japan", "currency": "Yen" }, "KRW": { "country": "Korea, Republic of", "currency": "South Korean Won" }, "CHF": { "country": "Switzerland", "currency": "Swiss Franc" }, "MYR": { "country": "Malaysia", "currency": "Malaysian Ringgit" }, "PHP": { "country": "Philippines", "currency": "Philippine Peso" }, "PLN": { "country": "Poland", "currency": "Poland Zloty" }, "SGD": { "country": "Singapore", "currency": "Singapore Dollar" }, "ZAR": { "country": "South Africa", "currency": "South African Rand" }, "SEK": { "country": "Sweden", "currency": "Swedish Krona" }, "THB": { "country": "Thailand", "currency": "Thai Baht" }, "GBP": { "country": "United Kingdom", "currency": "Pound Sterling" } };
@@ -18,6 +20,13 @@ export class AppComponent {
     this.loadLatest();
   }
   latestRate = [];
+
+  reason = '';
+
+  close(reason: string) {
+    this.reason = reason;
+    this.sidenav.close();
+  }
 
   loadLatest() {
     var latest = this.appService.loadLatest(this.currentCountryCode).subscribe(

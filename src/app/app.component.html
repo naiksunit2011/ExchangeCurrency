@@ -1,5 +1,19 @@
+
+<mat-sidenav-container>
+<mat-sidenav #sidenav (keydown.escape)="close('escape')" id="side-navigation-bar">    
+  <div >
+    <img src="../assets/back-img.png" alt="" class="side-opt-back-img" (click)="close('toggle button')" >
+  </div>
+  <div class="side-option">Convert</div>
+  <div class="side-option">Latest</div>
+  <div class="side-option">About Us</div>
+</mat-sidenav>
+
+<mat-sidenav-content>
+    
 <div class="header-wrapper">
-  Exchange Currency
+    <img src="../assets/side-option.png" alt="" class="side-opt-img" (click)="sidenav.open()" >
+    Exchange Currency
 </div>
 
 <div class="outerWrapper">
@@ -45,3 +59,5 @@
 <div class="footer-wrapper">
   Made with ❤️ in India ★ By Sunit Naik
 </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
