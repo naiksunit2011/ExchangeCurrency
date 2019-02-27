@@ -338,6 +338,8 @@ MIT
 
 @angular/material/table
 
+@angular/material/sidenav
+
 @angular/material/form-field
 
 @angular/material/select
